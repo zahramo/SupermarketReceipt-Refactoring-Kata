@@ -6,7 +6,7 @@ public class TenPercentDiscountOffer implements Offer {
     private static final int payableQuantity = 2;
     private static final int actualQuantity = 3;
     private static final int quantityRate = payableQuantity / actualQuantity;
-    private static final String description = " % off";
+    private static final String description = "% off";
 
     public TenPercentDiscountOffer(Product product, double argument) {
         this.argument = argument;

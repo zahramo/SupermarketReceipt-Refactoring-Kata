@@ -22,6 +22,6 @@ public class FiveForAmountOffer implements Offer {
 
     @Override
     public String getDescription() {
-        return description;
+        return description + argument;
     }
 }

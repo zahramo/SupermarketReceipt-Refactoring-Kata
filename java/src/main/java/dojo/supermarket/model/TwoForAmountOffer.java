@@ -4,7 +4,7 @@ public class TwoForAmountOffer implements Offer {
     private final Product product;
     private double argument;
     private static final int payableQuantity = 2;
-    private static final String description = "2 for";
+    private static final String description = "2 for ";
 
     public TwoForAmountOffer(Product product, double argument) {
         this.argument = argument;
