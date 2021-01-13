@@ -3,7 +3,7 @@ package dojo.supermarket.model;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FakeCatalog implements SupermarketCatalog {
+public class ProductCatalog implements SupermarketCatalog {
     private Map<String, Product> products = new HashMap<>();
     private Map<String, Double> prices = new HashMap<>();
 
@@ -14,7 +14,7 @@ public class FakeCatalog implements SupermarketCatalog {
     }
 
     @Override
-    public double getUnitPrice(Product p) {
-        return this.prices.get(p.getName());
+    public double getUnitPrice(Product product) {
+        return this.prices.get(product.getName());
     }
 }
