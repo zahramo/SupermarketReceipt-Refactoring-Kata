@@ -13,8 +13,8 @@ public class Teller {
         this.catalog = catalog;
     }
 
-    public void addSpecialOffer(SpecialOfferType offerType, Product product, double argument) {
-        this.offers.put(product, new Offer(offerType, product, argument));
+    public void addSpecialOffer(Offer offer, Product product) {
+        this.offers.put(product, offer);
     }
 
     public Receipt checksOutArticlesFrom(ShoppingCart theCart) {
@@ -27,9 +27,20 @@ public class Teller {
             double price = quantity * unitPrice;
             receipt.addProduct(p, quantity, unitPrice, price);
         }
-        theCart.handleOffers(receipt, this.offers, this.catalog);
+        handleOffers(receipt);
 
         return receipt;
+    }
+
+    private void handleOffers(Receipt receipt) {
+        for (ReceiptItem receiptItem: receipt.getItems()) {
+            Product product = receiptItem.getProduct();
+            if (offers.containsKey(product)) {
+                Offer offer = offers.get(product);
+                double discountAmount = offer.handle((int)receiptItem.getQuantity(), receiptItem.getPrice());
+                if (discountAmount > 0) receipt.addDiscount(new Discount(product, offer.getDescription(), -discountAmount));
+            }
+        }
     }
 
 }
