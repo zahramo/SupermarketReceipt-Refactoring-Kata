@@ -21,17 +21,15 @@ public class Product {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Product product = (Product) o;
-        return Objects.equals(name, product.name) &&
-                unit == product.unit;
+    public boolean equals(Object otherProduct) {
+        if (this == otherProduct) return true;
+        if (otherProduct == null || getClass() != otherProduct.getClass()) return false;
+        return Objects.equals(name, ((Product) otherProduct).name) &&
+                unit == ((Product) otherProduct).unit;
     }
 
     @Override
     public int hashCode() {
-
         return Objects.hash(name, unit);
     }
 }
